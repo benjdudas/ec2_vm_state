@@ -1,0 +1,14 @@
+---
+# tasks for ec2_inv_state role
+# vm_name is the inventory hostname from with_inventory_hostname
+
+- name: Gather facts on {{ vm_name }}
+  ec2_instance_facts:
+    filters:
+      "tag:Name": "{{ vm_name }}"
+  register: start_stat
+
+- name: Current instance state for {{ vm_name }}
+  debug:
+    msg: "{{ vm_name }} is currently {{ start_stat.instances[0].state.name }}"
+...
