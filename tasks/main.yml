@@ -3,7 +3,7 @@
 # vm_name is the inventory hostname from with_inventory_hostname
 
 - name: Gather facts on {{ vm_name }}
-  ec2_instance_facts:
+  ec2_instance_info:
     filters:
       "tag:Name": "{{ vm_name }}"
   register: start_stat
