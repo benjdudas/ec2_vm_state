@@ -6,6 +6,7 @@
   ec2_instance_info:
     filters:
       "tag:Name": "{{ vm_name }}"
+    region: "{{ ec2_region }}"
   register: start_stat
 
 - name: Current instance state for {{ vm_name }}
